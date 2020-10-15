@@ -16,8 +16,7 @@ public enum HelpType {
 	this.value = value;
 	}
 	
-	//getter that returns the int value of the enum constant
-	public int getHelpType() {
+	public int getValue() {
 		return this.value;
 	}
 }

@@ -13,9 +13,9 @@ public enum AnimalType {
 	AnimalType(int value) {
 	this.value = value;
 	}
-	
-	//getter that returns the int value of the enum constant
-	public int getAnimalType() {
+
+
+	public int getValue() {
 		return this.value;
 	}
 

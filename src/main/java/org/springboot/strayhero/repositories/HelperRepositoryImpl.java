@@ -8,12 +8,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class HelperRepositoryImpl {
+public class HelperRepositoryImpl implements HelperRepository {
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-//	@Override
+	@Override
 	public int save(Helper helper) {
 		System.out.println(helper.getUserId());
 		
@@ -22,7 +22,7 @@ public class HelperRepositoryImpl {
 				+ "values (?,?,?,?,?)", helper.getUserId(), helper.getOffersHelp(),helper.getHelpType(),helper.getAnimalType(),helper.getLocation());
 	}
 
-//	@Override
+	@Override
 	public int update(Helper helper) {
 	
 		return jdbcTemplate.update(
@@ -30,7 +30,7 @@ public class HelperRepositoryImpl {
 				helper.getUserId(), helper.getOffersHelp(),helper.getHelpType(),helper.getAnimalType(),helper.getLocation());		
 	}
 
-//	@Override
+	@Override
 	public int delete(Helper helper) {
 		
 		return jdbcTemplate.update( "delete from helper where usertId = ?",
@@ -38,7 +38,7 @@ public class HelperRepositoryImpl {
 		
 	}
 
-//	@Override
+	@Override
     public List findAll() {
         return jdbcTemplate.query(
                 "select * from helper",

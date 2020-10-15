@@ -3,13 +3,14 @@ package org.springboot.strayhero.repositories;
 import java.util.List;
 import java.util.Optional;
 import org.springboot.strayhero.models.Event;
+import org.springboot.strayhero.models.Location;
 import org.springboot.strayhero.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class eventRepositoryImpl implements EventRepository {
+public class EventRepositoryImpl implements EventRepository {
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -21,8 +22,8 @@ public class eventRepositoryImpl implements EventRepository {
 		return jdbcTemplate.update(
 				"insert into event (eventId, userId, lastModifiedDate, picure, issueDescription, address, location, contactPhoneNumber, animalType, helpType) "
 				+ "values (?,?,?,?,?,?,?,?,?,?)", event.getEventId(), event.getUserId(), event.getLastModifiedDate(), 
-				event.getPicure(), event.getIssueDescription(), event.getAddress(), event.getLocation(),
-				event.getContactPhoneNumber(), event.getAnimalType(), event.getHelpType());
+				event.getPicure(), event.getIssueDescription(), event.getAddress(), event.getLocation().getValue(),
+				event.getContactPhoneNumber(), event.getAnimalType().getValue(), event.getHelpType().getValue());
 	}
 
 	@Override

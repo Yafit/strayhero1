@@ -8,8 +8,9 @@ import org.springboot.strayhero.models.Event;
 import org.springboot.strayhero.models.HelpType;
 import org.springboot.strayhero.models.Location;
 import org.springboot.strayhero.models.User;
-import org.springboot.strayhero.repositories.eventRepositoryImpl;
+import org.springboot.strayhero.repositories.EventRepositoryImpl;
 import org.springboot.strayhero.services.EventService;
+import org.springboot.strayhero.services.HelperService;
 import org.springboot.strayhero.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -26,6 +27,9 @@ public class StrayheroApplication implements CommandLineRunner {
 	
 	@Autowired
 	EventService eventService;
+	
+	@Autowired
+	HelperService helperService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(StrayheroApplication.class, args);
@@ -49,8 +53,8 @@ public class StrayheroApplication implements CommandLineRunner {
 
 	public void createUser() {
 		
-		User user1 = new User("423", "Didi", "Rori", "didir@gmail.com", "0545778123", "Arthur 15, Tel Aviv",
-				"poprock");
+		User user1 = new User("2334443", "Shira", "Man", "Shirman@gmail.com", "057893123", "Pinkas 22, Tel Aviv",
+				"shiraman");
 
 		userService.save(user1);
 		System.out.println("Finished saving user");
@@ -59,8 +63,8 @@ public class StrayheroApplication implements CommandLineRunner {
 	
 	public void createEvent() {
 		System.out.println("In create event");
-		Event event1 = new Event("093812", "84434", new Date(1602007002000L) ,null, "An injured cat", "Rehov Rehovot 44, Tel Aviv", 
-				Location.CENTER, "0548193054", AnimalType.CAT, HelpType.FOSTER);
+		Event event1 = new Event("33132434", "79732", new Date(1602007002000L) ,null, "A stray dog", 
+				"HaGina 77, Ramat Gan", Location.CENTER, "0542193254", AnimalType.CAT, HelpType.DRIVE);
 		
 		eventService.save(event1);
 		

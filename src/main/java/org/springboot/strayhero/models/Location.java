@@ -18,8 +18,8 @@ public enum Location {
 	this.value = value;
 	}
 	
-	//getter that returns the int value of the enum constant
-	public int getLocation() {
+	public int getValue() {
 		return this.value;
 	}
+
 }
