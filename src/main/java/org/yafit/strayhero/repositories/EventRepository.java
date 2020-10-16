@@ -1,9 +1,10 @@
-package org.springboot.strayhero.repositories;
+package org.yafit.strayhero.repositories;
 
 import java.util.List;
 import java.util.Optional;
-import org.springboot.strayhero.models.Event;
-import org.springboot.strayhero.models.User;
+
+import org.yafit.strayhero.models.Event;
+import org.yafit.strayhero.models.User;
 
 public interface EventRepository {
 	int save(Event event);

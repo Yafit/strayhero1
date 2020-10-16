@@ -1,4 +1,4 @@
-package org.springboot.strayhero.models;
+package org.yafit.strayhero.models;
 
 import java.awt.Image;
 import java.util.Date;

@@ -1,11 +1,12 @@
-package org.springboot.strayhero.repositories;
+package org.yafit.strayhero.repositories;
 
 import java.util.List;
 import java.util.Optional;
-import org.springboot.strayhero.models.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.yafit.strayhero.models.User;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
@@ -30,8 +31,16 @@ public class UserRepositoryImpl implements UserRepository {
 				user.getFirstName(), user.getLastName(), 
 				user.getEmail(), user.getPhoneNumber(), user.getPassword(), user.getAddress(), user.getId());
 		
-	}
+	} 
 
+	@Override
+	public int updateField(String userId, String fieldName, String fieldValue) {
+		String sqlStr = "update user set " + fieldName + " = ? where id = ?";
+		return jdbcTemplate.update(
+				sqlStr,
+				fieldValue, userId);		
+	}
+	
 	@Override
 	public int delete(User user) {
 		
@@ -41,7 +50,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-    public List findAll() {
+    public List<User> findAll() {
         return jdbcTemplate.query(
                 "select * from user",
                 (rs, rowNum) ->
@@ -62,6 +71,7 @@ public class UserRepositoryImpl implements UserRepository {
                 (rs, rowNum) ->
                         Optional.of(new User(
                                 rs.getString("id"),
-                                rs.getString("firstName"))));
+                                rs.getString("firstName"),
+                                rs.getString("lastName"))));
 	}
 }

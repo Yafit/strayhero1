@@ -1,9 +1,9 @@
-package org.springboot.strayhero.repositories;
+package org.yafit.strayhero.repositories;
 
 import java.util.List;
 import java.util.Optional;
 
-import org.springboot.strayhero.models.Helper;
+import org.yafit.strayhero.models.Helper;
 
 public interface HelperRepository {
 	int save(Helper helper);

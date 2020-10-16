@@ -1,4 +1,6 @@
-package org.springboot.strayhero.models;
+package org.yafit.strayhero.models;
+
+import org.springframework.data.annotation.LastModifiedDate;
 
 public class User {
 	private String id;
@@ -25,6 +27,7 @@ public class User {
 	public User (String id) {
 		super();
 		this.id = id;
+		
 	}
 
 	public User(String id, String firstName) {
@@ -32,7 +35,14 @@ public class User {
 		this.id = id;
 		this.firstName = firstName;
 	}
-
+	
+	public User(String id, String firstName, String lastName) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
 	public String getId() {
 		return this.id;
 	}

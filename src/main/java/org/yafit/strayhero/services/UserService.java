@@ -1,15 +1,17 @@
-package org.springboot.strayhero.services;
+package org.yafit.strayhero.services;
 
 import java.util.List;
 import java.util.Optional;
-import org.springboot.strayhero.models.User;
+
+import org.yafit.strayhero.models.User;
 
 public interface UserService {
 		
 	
 		int save(User user);
 		int update(User user);
+		int updateField(String userId, String fieldName, String fieldValue);
 		int delete(User user);
-		List findAll();
+		List<User> findAll();
 		Optional findById(String id);
 }

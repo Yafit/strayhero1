@@ -1,11 +1,12 @@
-package org.springboot.strayhero.services;
+package org.yafit.strayhero.services;
 
 import java.util.List;
 import java.util.Optional;
-import org.springboot.strayhero.models.Event;
-import org.springboot.strayhero.repositories.EventRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.yafit.strayhero.models.Event;
+import org.yafit.strayhero.repositories.EventRepository;
 
 @Service
 public class EventServiceImpl implements EventService {

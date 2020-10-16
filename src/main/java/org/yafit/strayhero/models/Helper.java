@@ -1,4 +1,4 @@
-package org.springboot.strayhero.models;
+package org.yafit.strayhero.models;
 
 public class Helper {
 	User userId; //PK

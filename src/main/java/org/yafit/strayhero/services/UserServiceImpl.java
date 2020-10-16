@@ -1,12 +1,12 @@
-package org.springboot.strayhero.services;
+package org.yafit.strayhero.services;
 
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springboot.strayhero.models.User;
-import org.springboot.strayhero.repositories.UserRepository;
+import org.yafit.strayhero.models.User;
+import org.yafit.strayhero.repositories.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -25,6 +25,12 @@ public class UserServiceImpl implements UserService {
 
 		return userRepository.update(user);
 	}
+	
+	@Override
+	public int updateField(String userId, String fieldName, String fieldValue) {
+
+		return userRepository.updateField(userId, fieldName, fieldValue);
+	}
 
 	@Override
 	public int delete(User user) {
@@ -33,7 +39,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public List findAll() {
+	public List<User> findAll() {
 		return userRepository.findAll();
 	}
  

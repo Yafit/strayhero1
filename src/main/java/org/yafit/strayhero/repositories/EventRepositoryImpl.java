@@ -1,13 +1,14 @@
-package org.springboot.strayhero.repositories;
+package org.yafit.strayhero.repositories;
 
 import java.util.List;
 import java.util.Optional;
-import org.springboot.strayhero.models.Event;
-import org.springboot.strayhero.models.Location;
-import org.springboot.strayhero.models.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.yafit.strayhero.models.Event;
+import org.yafit.strayhero.models.Location;
+import org.yafit.strayhero.models.User;
 
 @Repository
 public class EventRepositoryImpl implements EventRepository {

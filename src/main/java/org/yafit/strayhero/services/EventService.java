@@ -1,8 +1,9 @@
-package org.springboot.strayhero.services;
+package org.yafit.strayhero.services;
 
 import java.util.List;
 import java.util.Optional;
-import org.springboot.strayhero.models.Event;
+
+import org.yafit.strayhero.models.Event;
 
 public interface EventService {
 	int save(Event event);

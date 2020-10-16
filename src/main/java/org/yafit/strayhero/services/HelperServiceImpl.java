@@ -1,11 +1,12 @@
-package org.springboot.strayhero.services;
+package org.yafit.strayhero.services;
 
 import java.util.List;
 import java.util.Optional;
-import org.springboot.strayhero.models.Helper;
-import org.springboot.strayhero.repositories.HelperRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.yafit.strayhero.models.Helper;
+import org.yafit.strayhero.repositories.HelperRepository;
 
 @Service
 public class HelperServiceImpl implements HelperService {
@@ -24,6 +25,7 @@ public class HelperServiceImpl implements HelperService {
 
 		return helperRepository.update(helper);
 	}
+	
 
 	@Override
 	public int delete(Helper helper) {
