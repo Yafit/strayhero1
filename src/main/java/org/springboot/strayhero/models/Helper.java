@@ -1,28 +1,33 @@
 package org.springboot.strayhero.models;
 
 public class Helper {
-	String userId; //PK
+	User userId; //PK
 	Boolean offersHelp;
 	HelpType helpType;
-	//int helpType;
 	AnimalType animalType; //PK
-	//int animalType;
 	Location location;
-	//int location;
 
 
-public Helper(String userId) {
+public Helper(User userId) {
 	super();
 	this.userId = userId;
 }
 
+public Helper(User userId, Boolean offersHelp, HelpType helpType, AnimalType animalType, Location location) {
+	super();
+	this.userId = userId;
+	this.offersHelp = offersHelp;
+	this.helpType = helpType;
+	this.animalType = animalType;
+	this.location = location;
+}
 
-public String getUserId() {
+public User getUserId() {
 	return userId;
 }
 
 
-public void setUserId(String userId) {
+public void setUserId(User userId) {
 	this.userId = userId;
 }
 

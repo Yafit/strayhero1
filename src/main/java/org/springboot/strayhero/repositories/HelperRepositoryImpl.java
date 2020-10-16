@@ -2,7 +2,10 @@ package org.springboot.strayhero.repositories;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.hibernate.validator.internal.util.privilegedactions.NewInstance;
 import org.springboot.strayhero.models.Helper;
+import org.springboot.strayhero.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -15,11 +18,12 @@ public class HelperRepositoryImpl implements HelperRepository {
 	
 	@Override
 	public int save(Helper helper) {
-		System.out.println(helper.getUserId());
+		System.out.println(helper.getUserId().getId());
 		
 		return jdbcTemplate.update(
 				"insert into helper (userId, offersHelp, helpType, animalType, location) "
-				+ "values (?,?,?,?,?)", helper.getUserId(), helper.getOffersHelp(),helper.getHelpType(),helper.getAnimalType(),helper.getLocation());
+				+ "values (?,?,?,?,?)", helper.getUserId().getId(), helper.getOffersHelp(),helper.getHelpType().getValue(),
+				helper.getAnimalType().getValue(),helper.getLocation().getValue());
 	}
 
 	@Override
@@ -27,14 +31,15 @@ public class HelperRepositoryImpl implements HelperRepository {
 	
 		return jdbcTemplate.update(
 				"update helper set userId = ?, offersHelp = ?, helpType = ?, animalType = ?, location = ?", 
-				helper.getUserId(), helper.getOffersHelp(),helper.getHelpType(),helper.getAnimalType(),helper.getLocation());		
+				helper.getUserId().getId(), helper.getOffersHelp(),helper.getHelpType().getValue(),
+				helper.getAnimalType().getValue(),helper.getLocation().getValue());		
 	}
 
 	@Override
 	public int delete(Helper helper) {
 		
 		return jdbcTemplate.update( "delete from helper where usertId = ?",
-                helper.getUserId());
+                helper.getUserId().getId());
 		
 	}
 
@@ -44,9 +49,8 @@ public class HelperRepositoryImpl implements HelperRepository {
                 "select * from helper",
                 (rs, rowNum) ->
                         new Helper(
-                                rs.getString("userId")
-                   )
-        );
+                                (User) rs.getObject(1))
+                   );
     }
 	
 	
@@ -58,6 +62,7 @@ public class HelperRepositoryImpl implements HelperRepository {
                 new Object[]{id},
                 (rs, rowNum) ->
                         Optional.of(new Helper(
-                                rs.getString("userId"))));
+                               (User) rs.getObject(1)))
+                        );
 	}
 }

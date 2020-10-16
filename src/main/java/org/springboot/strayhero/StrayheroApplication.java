@@ -6,6 +6,7 @@ import java.util.Scanner;
 import org.springboot.strayhero.models.AnimalType;
 import org.springboot.strayhero.models.Event;
 import org.springboot.strayhero.models.HelpType;
+import org.springboot.strayhero.models.Helper;
 import org.springboot.strayhero.models.Location;
 import org.springboot.strayhero.models.User;
 import org.springboot.strayhero.repositories.EventRepositoryImpl;
@@ -41,6 +42,7 @@ public class StrayheroApplication implements CommandLineRunner {
 		createUser();
 		System.out.println("Finish create user");
 		createEvent();
+		createHelper();
 		
 		try {
 			userData();
@@ -53,18 +55,18 @@ public class StrayheroApplication implements CommandLineRunner {
 
 	public void createUser() {
 		
-		User user1 = new User("2334443", "Shira", "Man", "Shirman@gmail.com", "057893123", "Pinkas 22, Tel Aviv",
-				"shiraman");
+		User user1 = new User("8522499", "Rania", "Davidia", "RaniD@gmail.com", "057800123", "Moria 22, Haifa",
+				"Ranid");
 
 		userService.save(user1);
 		System.out.println("Finished saving user");
-		
+
 		}
 	
 	public void createEvent() {
 		System.out.println("In create event");
-		Event event1 = new Event("33132434", "79732", new Date(1602007002000L) ,null, "A stray dog", 
-				"HaGina 77, Ramat Gan", Location.CENTER, "0542193254", AnimalType.CAT, HelpType.DRIVE);
+		Event event1 = new Event("15800270", new User("07120443"), new Date(1602007002000L) ,null, "This dog is too cute", 
+				"Shomronia 43, Haifa", Location.GALIL, "0542104354", AnimalType.CAT, HelpType.FEED);
 		
 		eventService.save(event1);
 		
@@ -97,4 +99,12 @@ public class StrayheroApplication implements CommandLineRunner {
 
 	}
 
+	public void createHelper() {
+		System.out.println("Before creating helper");
+		Helper helper1 = new Helper(new User("07120443"), true, HelpType.ADOPTIONDAY, AnimalType.BIRD, Location.JERUSALEM);
+		
+		
+		helperService.save(helper1);
+		System.out.println("After creating helper");
+	}
 }

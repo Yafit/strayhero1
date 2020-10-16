@@ -21,7 +21,7 @@ public class EventRepositoryImpl implements EventRepository {
 		
 		return jdbcTemplate.update(
 				"insert into event (eventId, userId, lastModifiedDate, picure, issueDescription, address, location, contactPhoneNumber, animalType, helpType) "
-				+ "values (?,?,?,?,?,?,?,?,?,?)", event.getEventId(), event.getUserId(), event.getLastModifiedDate(), 
+				+ "values (?,?,?,?,?,?,?,?,?,?)", event.getEventId(), event.getUserId().getId(), event.getLastModifiedDate(), 
 				event.getPicure(), event.getIssueDescription(), event.getAddress(), event.getLocation().getValue(),
 				event.getContactPhoneNumber(), event.getAnimalType().getValue(), event.getHelpType().getValue());
 	}
@@ -31,9 +31,9 @@ public class EventRepositoryImpl implements EventRepository {
 	
 		return jdbcTemplate.update(
 				"update user set eventId = ?, userId = ?, lastModifiedDate = ?, picure = ?, issueDescription = ?, address = ?, location = ?, contactPhoneNumber = ?, animalType = ?, helpType = ?", 
-				event.getEventId(), event.getUserId(), event.getLastModifiedDate(), 
-				event.getPicure(), event.getIssueDescription(), event.getAddress(), event.getLocation(),
-				event.getContactPhoneNumber(), event.getAnimalType(), event.getHelpType());
+				event.getEventId(), event.getUserId().getId(), event.getLastModifiedDate(), 
+				event.getPicure(), event.getIssueDescription(), event.getAddress(), event.getLocation().getValue(),
+				event.getContactPhoneNumber(), event.getAnimalType().getValue(), event.getHelpType().getValue());
 		
 	}
 

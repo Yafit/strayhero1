@@ -7,7 +7,7 @@ public class Event {
 	String eventId;
 	User userId;
 	Date lastModifiedDate;
-	Image picure;	//Change to null
+	Image picure;	
 	String issueDescription;
 	String address;
 	Location location;
@@ -21,7 +21,7 @@ public class Event {
 		this.eventId = eventId;
 	}
 	
-	public Event(String eventId, String userID, Date lastModifiedDate, Image picture, String issueDescription, 
+	public Event(String eventId, User userId, Date lastModifiedDate, Image picture, String issueDescription, 
 			String address, Location location, String contactPhoneNumber, AnimalType animalType, HelpType helpType) {
 		super();
 		this.eventId = eventId;
