@@ -3,10 +3,12 @@ package org.yafit.strayhero.repositories;
 import java.util.List;
 import java.util.Optional;
 
+import org.omg.IOP.TAG_CODE_SETS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.yafit.strayhero.models.User;
+import org.yafit.strayhero.services.UserService;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
@@ -51,16 +53,19 @@ public class UserRepositoryImpl implements UserRepository {
 
 	@Override
     public List<User> findAll() {
-        return jdbcTemplate.query(
+		System.out.println("Inside find all"); 
+		
+	return jdbcTemplate.query(
                 "select * from user",
                 (rs, rowNum) ->
                         new User(
                                 rs.getString("id"),
-                                rs.getString("firstName")
+                                rs.getString("firstName"),
+                                rs.getString("lastName")
                    )
         );
+
     }
-	
 	
 	@Override
 	public Optional findById(String id) {

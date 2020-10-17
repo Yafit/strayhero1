@@ -28,17 +28,26 @@ public class HelperRepositoryImpl implements HelperRepository {
 
 	@Override
 	public int update(Helper helper) {
-	
+		
 		return jdbcTemplate.update(
-				"update helper set userId = ?, offersHelp = ?, helpType = ?, animalType = ?, location = ?", 
-				helper.getUserId().getId(), helper.getOffersHelp(),helper.getHelpType().getValue(),
-				helper.getAnimalType().getValue(),helper.getLocation().getValue());		
+				"update helper set offersHelp = ? where userId = ? AND helpType = ? AND animalType = ?",
+				helper.getOffersHelp(), helper.getUserId().getId(), helper.getHelpType().getValue(),
+				helper.getAnimalType().getValue());
+	}
+	
+	@Override
+	public int updateField(String userId, String fieldName, String fieldValue) {
+		String sqlStr = "update helper set " + fieldName + " = ? where userId = ?";
+		
+		return jdbcTemplate.update(
+				sqlStr,
+				fieldValue, userId);		
 	}
 
 	@Override
 	public int delete(Helper helper) {
 		
-		return jdbcTemplate.update( "delete from helper where usertId = ?",
+		return jdbcTemplate.update( "delete from helper where userId = ?",
                 helper.getUserId().getId());
 		
 	}

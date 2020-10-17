@@ -26,7 +26,12 @@ public class HelperServiceImpl implements HelperService {
 		return helperRepository.update(helper);
 	}
 	
+	@Override
+	public int updateField(String userId, String fieldName, String fieldValue) {
 
+		return helperRepository.updateField(userId, fieldName, fieldValue);
+	}
+	
 	@Override
 	public int delete(Helper helper) {
 

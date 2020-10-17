@@ -9,6 +9,7 @@ public interface HelperService {
 
 	int save(Helper helper);
 	int update(Helper helper);
+	int updateField(String userId, String fieldName, String fieldValue);
 	int delete(Helper helper);
 	List findAll();
 	Optional findById(String id);

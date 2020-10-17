@@ -27,6 +27,12 @@ public class EventServiceImpl implements EventService {
 	}
 
 	@Override
+	public int updateField(String eventId, String fieldName, String fieldValue) {
+
+		return eventRepository.updateField(eventId, fieldName, fieldValue);
+	}
+	
+	@Override
 	public int delete(Event event) {
 
 		return eventRepository.delete(event);

@@ -16,11 +16,7 @@ public class Event {
 	HelpType helpType;
 
 	//constructor
-	public Event(String eventId) {
-		super();
-		this.eventId = eventId;
-	}
-	
+
 	public Event(String eventId, User userId, Date lastModifiedDate, Image picture, String issueDescription, 
 			String address, Location location, String contactPhoneNumber, AnimalType animalType, HelpType helpType) {
 		super();
@@ -35,7 +31,15 @@ public class Event {
 		this.animalType = animalType;
 		this.helpType = helpType;
 	}
-
+	
+	public Event(String eventId, String issueDescription, 
+			String address) {
+		super();
+		this.eventId = eventId;
+		this.issueDescription = issueDescription;
+		this.address = address;
+	}
+	
 	// Getters and Setters
 	public String getEventId() {
 		return eventId;
@@ -117,5 +121,9 @@ public class Event {
 		this.helpType = helpType;
 	}
 
+	@Override
+	public String toString() {
+		return "Event [eventId=" + eventId + ", issueDescription=" + issueDescription + ", address=" + address + "]";
+	}
 
 }
