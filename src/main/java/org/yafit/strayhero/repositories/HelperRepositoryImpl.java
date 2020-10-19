@@ -7,6 +7,7 @@ import org.hibernate.validator.internal.util.privilegedactions.NewInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.yafit.strayhero.models.HelpType;
 import org.yafit.strayhero.models.Helper;
 import org.yafit.strayhero.models.User;
 
@@ -26,24 +27,24 @@ public class HelperRepositoryImpl implements HelperRepository {
 				helper.getAnimalType().getValue(),helper.getLocation().getValue());
 	}
 
-	@Override
-	public int update(Helper helper) {
-		
-		return jdbcTemplate.update(
-				"update helper set offersHelp = ? where userId = ? AND helpType = ? AND animalType = ?",
-				helper.getOffersHelp(), helper.getUserId().getId(), helper.getHelpType().getValue(),
-				helper.getAnimalType().getValue());
+	
+	public int updateField(User userId, String fieldName, String fieldValue) {
+		System.out.println("Inside updateField");
+		System.out.println("UserID: " + userId + " ; Field Name: "+ fieldName + "; Value: " + fieldValue);
+		String sqlStr =  "update helper set " + fieldName + " = ? where userId = ?";
+		return jdbcTemplate.update(sqlStr, fieldValue, userId.getId());
 	}
 	
+	
 	@Override
-	public int updateField(String userId, String fieldName, String fieldValue) {
-		String sqlStr = "update helper set " + fieldName + " = ? where userId = ?";
+	public int updateOffersHelp(Helper helper) {
+		System.out.println(helper.getHelpType());
 		
 		return jdbcTemplate.update(
-				sqlStr,
-				fieldValue, userId);		
+				"update helper set offersHelp = ? where userId = ?",
+				helper.getOffersHelp(), helper.getUserId().getId());
 	}
-
+	
 	@Override
 	public int delete(Helper helper) {
 		
@@ -58,12 +59,12 @@ public class HelperRepositoryImpl implements HelperRepository {
                 "select * from helper",
                 (rs, rowNum) ->
                         new Helper(
-                                (User) rs.getObject(1))
+                                (User)rs.getObject(1))
                    );
     }
 	
 	
-//	@Override
+	@Override
 	public Optional findById(String id) {
 		
 		return jdbcTemplate.queryForObject(
@@ -71,7 +72,8 @@ public class HelperRepositoryImpl implements HelperRepository {
                 new Object[]{id},
                 (rs, rowNum) ->
                         Optional.of(new Helper(
-                               (User) rs.getObject(1)))
+                               (User)rs.getObject(1)))
                         );
 	}
+	
 }

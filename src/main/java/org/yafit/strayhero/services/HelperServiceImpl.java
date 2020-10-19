@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.yafit.strayhero.models.HelpType;
 import org.yafit.strayhero.models.Helper;
+import org.yafit.strayhero.models.User;
 import org.yafit.strayhero.repositories.HelperRepository;
 
 @Service
@@ -21,15 +23,13 @@ public class HelperServiceImpl implements HelperService {
 	}
 
 	@Override
-	public int update(Helper helper) {
-
-		return helperRepository.update(helper);
+	public int updateField(User userId, String fieldName, String fieldValue) {
+		System.out.println("Inside updateField service");
+	return helperRepository.updateField(userId, fieldName, fieldValue);	
 	}
 	
-	@Override
-	public int updateField(String userId, String fieldName, String fieldValue) {
-
-		return helperRepository.updateField(userId, fieldName, fieldValue);
+	public int updateOffersHelp(Helper helper) {
+		return helperRepository.updateOffersHelp(helper);
 	}
 	
 	@Override

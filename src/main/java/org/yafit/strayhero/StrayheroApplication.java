@@ -40,34 +40,36 @@ public class StrayheroApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Starting application");
-		//createUser();
-		//deleteUser(new User("10202"));
-		//createHelper();
-		//updateUser (new User("1422499", "Rania", "Davidia", "RaniD@gmail.com", "057800123", "Moria 22, Haifa","Ranid"));
-		//userService.updateUserField("33149", "lastName", "Marom");
-		//userService.updateField("33149", "email", "doronMarom@gmail.com");
-		//updateField("097213", "email", "didiHarari@walla.com");
-		/*try {		//find by id
+		createUser();
+		deleteUser(new User("545555448"));
+		createHelper();
+		updateUser (new User("789789", "Shlomi", "Hayon-Sade", "ShlomiHayon@gmail.com", "057800444", "Iben Gabirol 33 Tel Aviv","Shlomi111"));
+		userService.updateField("33149", "email", "doronSimanTov@gmail.com");
+		updateUserField("097213", "email", "didiHarari111@walla.com");
+		try {		//find by id
 			findById("1422499");
 		} catch (Throwable e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}*/
-		//findAllUsers();
-		//createEvent();
-		//deleteEvent(new Event("623331"));
-		//updateEvent(new Event("15800270", new User("07120443"), new Date(1602007002000L), null, "This dog is too cute", "Shomronia 43, Haifa", Location.GALIL, "0542104354", AnimalType.CAT, HelpType.FEED));
-		//updateEventField("15800270", "issueDescription", "The dog is now injured");
-		//findAllEvents();
-		updateHelper(new Helper(new User("07120443"), true, HelpType.ADOPTIONDAY, AnimalType.CAT, Location.JERUSALEM));
-		//updateHelper(new Helper(new User("091892"), true, HelpType.ADOPTIONDAY, AnimalType.CAT, Location.JERUSALEM));
-
+		}
+		findAllUsers();
+		createEvent();
+		deleteEvent(new Event("18800270"));
+		updateEvent(new Event("15800270", new User("07120443"), new Date(1602007002000L), null, "This dog is sick", "Shomronia 43, Haifa", Location.GALIL, "0542104354", AnimalType.CAT, HelpType.FEED));
+		updateEventField("15800270", "issueDescription", "The dog is now injured");
+		findAllEvents();
+		updateOffersHelp(new Helper(new User("07120443"), true, HelpType.ADOPTIONDAY, AnimalType.CAT, Location.JERUSALEM));
+		System.out.println(HelpType.ADOPTIONDAY);
+		updateHelperField(new User("07120443"), "helpType", HelpType.DRIVE.toString());
+		
 	}
+		
+
 
 	public void createUser() {
 		
-		User user1 = new User("66524399", "Rania", "Davidia", "RaniD@gmail.com", "057800123", "Moria 22, Haifa",
-				"Ranid");
+		User user1 = new User("789789", "Shlomi", "Hayon", "ShlomiHayon@gmail.com", "057800444", "Iben Gabirol 33 Tel Aviv",
+				"Shlomi111");
 
 		userService.save(user1);
 		System.out.println("Finished saving user");
@@ -136,15 +138,15 @@ public class StrayheroApplication implements CommandLineRunner {
 		System.out.println("After creating helper");
 	}
 	
-	//To do
-	//No need for deleteHelper since they are deleted in the DB if user does not exist
-	//I don't want helpers to be deleted, but modified
-	
-	public void updateHelper(Helper helper) {
-		List<Helper> helperList = helperService.findAll();
-		helperList.stream().forEach(h -> h.setOffersHelp(false));		
-		helperList.stream().forEach(h -> helperService.update(h));
+	public void updateOffersHelp(Helper helper) {
+		helper.setOffersHelp(false);;
+		helperService.updateOffersHelp(helper);
 	}
 	
+	
+	public void updateHelperField(User userId, String fieldName, String fieldValue) {
+		
+		helperService.updateField(userId, fieldName, fieldValue);
+	}
 
 }

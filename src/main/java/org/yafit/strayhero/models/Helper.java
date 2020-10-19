@@ -8,15 +8,23 @@ public class Helper {
 	Location location;
 
 
+public Helper(User userId, Boolean offersHelp, HelpType helpType, AnimalType animalType, Location location) {
+	super();
+	this.userId = userId;
+	this.offersHelp = offersHelp;
+	this.helpType = helpType;
+	this.animalType = animalType;
+	this.location = location;
+}
+
 public Helper(User userId) {
 	super();
 	this.userId = userId;
 }
 
-public Helper(User userId, Boolean offersHelp, HelpType helpType, AnimalType animalType, Location location) {
+public Helper(User userId, HelpType helpType, AnimalType animalType, Location location) {
 	super();
 	this.userId = userId;
-	this.offersHelp = offersHelp;
 	this.helpType = helpType;
 	this.animalType = animalType;
 	this.location = location;

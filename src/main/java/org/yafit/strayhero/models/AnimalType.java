@@ -19,4 +19,5 @@ public enum AnimalType {
 		return this.value;
 	}
 
+	
 }

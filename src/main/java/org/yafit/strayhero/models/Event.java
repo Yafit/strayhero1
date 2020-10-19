@@ -40,6 +40,10 @@ public class Event {
 		this.address = address;
 	}
 	
+	public Event (String eventId) {
+		this.eventId = eventId;
+	}
+	
 	// Getters and Setters
 	public String getEventId() {
 		return eventId;
